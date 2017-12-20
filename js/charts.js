@@ -1,10 +1,7 @@
 Reveal.addEventListener('slidechanged', function( event ) {
-  console.log(event.currentSlide.getAttribute('id'));
-  //if(event.currentSlide.getAttribute('id'))
   if (event.currentSlide.getAttribute('id') === stats) {
 
   }
-	// event.previousSlide, event.currentSlide, event.indexh, event.indexv
 });
 
 
