@@ -43,7 +43,15 @@ section.has-light-background {
 	}
 }
 
-
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
+
+#title {
+	h1 {
+		font-size: $heading2Size;
+	}
+	h2 {
+		font-size: $heading1Size;
+	}
+}

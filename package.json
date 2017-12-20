@@ -1,9 +1,8 @@
 {
-  "name": "reveal.js",
-  "version": "3.6.0",
-  "description": "The HTML Presentation Framework",
+  "name": "IntrotoPa11y",
+  "version": "0.0.0",
+  "description": "Often the hardest part of any problem is simply how to get started. On the ever-evolving web accessibility is a matter of ongoing importance: the brilliance of your code or sleekness of your UI is inconsequential if your app or website is unusable to some of your users. With a million other issues already on your plate how do you find a way to get started on accessibility testing? Pa11y to the rescue! Pa11y is a lightweight command-line accessibility testing tool with enough flexibility to integrate results into your current testing process. This talk will explain what pa11y does and does not cover, review examples of both command line and scripted usage, dive into the pa11y webservice and show how to modify output to work in your current testing setup. Bonus content: how to convince the rest of your team and business why accessibility is worth prioritizing and how getting started with low-hanging fruit can vastly improve your product.",
   "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
@@ -11,13 +10,13 @@
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Jennifer Wadella",
+    "email": "jennifer.wadella@gmail.com",
+    "web": "http://jenniferwadella.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/tehfedaykin/IntrotoPa11y.git"
   },
   "engines": {
     "node": ">=4.0.0"

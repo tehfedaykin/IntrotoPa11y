@@ -4,13 +4,16 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>Making Accessibility Testing Suck Less: An Intro to Pa11y.</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<script src="./amcharts/amcharts.js" type="text/javascript"></script>
+		<script src="./amcharts/serial.js" type="text/javascript"></script>
+		<script src="./amcharts/themes/dark.js" type="text/javascript"></script>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -24,19 +27,272 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section id="title">
+					<h1>Making Accessibility Testing Suck Less:</h1>
+					<h2>An Intro to Pa11y</h2>
+					<h3>Jennifer Wadella</h3>
+				</section>
+				<section id="sponsors" data-background="">Thanks to all our sponsors!</section>
+				<section id="me">
+					<h2>Jennifer Wadella</h2>
+					<h3><a href="http://twitter.com/likeOMGitsFEDAY">@likeOMGitsFEDAY</a></h3>
+					<ul>
+						<li class="fragment">JavaScript Developer</li>
+						<li class="fragment">Community Organizer</li>
+						<li class="fragment">Diversity Advocate</li>
+					</ul>
+					<img class="fragment" src="img/selftaught.gif" alt="" style="clear:both;display: block;margin:10px auto;">
+				</section>
+				<section id="intro-story">
+					<h2>Accessibility - why should I care?</h2>
+					<aside class="notes">
+						Jul 26, 2014 - Coding & Cupcakes
+						Story about almost blind cupcakes attendee.
+					</aside>
+				</section>
+				<section id="stats">
+			     <div id="visually-impaired" style="width: 100%;height: 500px;"></div>
+					 <p class="small">Data source: National Center for Health Statistics, National Health
+						 Interview Survey (NHIS), 2015, <a href="www.cdc.gov/nchs/nhis.htm">www.cdc.gov/nchs/nhis.htm</a>.</p>
+				</section>
+				<section id="a11y">
+					<h2>a11y</h2>
+					<p>Accessibility (a11y) is a measure of a computer system's accessibility is to all people,
+						including those with disabilities or impairments. It concerns both software and hardware
+						and how they are configured in order to enable a disabled or impaired person to use that
+						computer system successfully.</p>
+				</section>
+				<section id="setstage">
+					<h2>Setting the Stage for Accessability Testing.</h2>
+					<h3>Issues:</h3>
+					<ul>
+						<li>blindness</li>
+						<li>color blindness(Deuteranopia, Protanopia, Tritanopia)</li>
+					</ul>
+					<aside class="notes">
+						Deuteranopia - red green colorblindness - less sensitive to green light
+						Protanopia - red/green colorblindess - less sensitive to red light
+						Tritanopia - blue/yellow colorblindness
+					</aside>
+				</section>
+				<section id="checklist">
+					<h2>Accessability Checklist</h2>
+					<ul class="checklist">
+						<li><input type="checkbox">Landmark Roles</li>
+						<li><input type="checkbox">Language Attribute</li>
+						<li><input type="checkbox">Semantic Headings</li>
+						<li><input type="checkbox">Links - :focus state and recognizable</li>
+						<li><input type="checkbox">Image alt text</li>
+						<li><input type="checkbox">Forms - labels, placeholdes, and fieldsets</li>
+						<li><input type="checkbox">Audio/video - provide transcripts/subtitles</li>
+						<li><input type="checkbox">Color & Contrast</li>
+						<li><input type="checkbox">Screen Reading/Keyboard Testing</li>
+					</ul>
+				</section>
+				<section id="review-standards">
+					<h2>Let's review some standards!</h2>
+				</section>
+				<section>
+					<section id="section-508">
+						<h2>Section 508 Standards</h2>
+						<h4>§ 1194.22   Web-based intranet and internet information and applications.</h4>
+						<p class="small">
+							<a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards">
+							https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards</a>
+						</p>
+					</section>
+					<section id="section-508-list">
+						<ol class="small">
+							<li>A text equivalent for every non-text element shall be provided (e.g., via “alt”, “longdesc”, or in element content).</li>
+							<li>Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.</li>
+							<li>Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.</li>
+							<li>Documents shall be organized so they are readable without requiring an associated style sheet.</li>
+							<li>Redundant text links shall be provided for each active region of a server-side image map.</li>
+							<li>Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape.</li>
+							<li>Row and column headers shall be identified for data tables.</li>
+							<li>Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.</li>
+							<li>Frames shall be titled with text that facilitates frame identification and navigation.</li>
+							<li>Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.</li>
+							<li>A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance
+								cannot be accomplished in any other way.  The content of the text-only page shall be updated whenever the primary page changes.</li>
+							<li>When pages utilize scripting languages to display content, or to create interface elements, the information provided by
+								the script shall be identified with functional text that can be read by assistive technology.</li>
+							<li>When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a
+								link to a plug-in or applet that complies with §1194.21(a) through (l).</li>
+							<li>When electronic forms are designed to be completed on-line, the form shall allow people using assistive technology to access the information, field elements,
+								and functionality required for completion and submission of the form, including all directions and cues.</li>
+							<li>A method shall be provided that permits users to skip repetitive navigation links.</li>
+							<li>When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.</li>
+						</ol>
+					</section>
+				</section>
+				<section id="">
+					<section id="WCAG2">
+						<h2>WCAG 2.0 Guidelines</h2>
+						<h4>§ 1194.22   Web-based intranet and internet information and applications.</h4>
+						<p class="small"><a href="https://www.w3.org/TR/WCAG20/">https://www.w3.org/TR/WCAG20/</a></p>
+					</section>
+					<section id="WCAG2-percievable">
+						<h4>Percievable</h4>
+						<ol>
+							<li>Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.</li>
+							<li>Provide alternatives for time-based media.</li>
+							<li>Create content that can be presented in different ways (for example simpler layout) without losing information or structure.</li>
+							<li>Make it easier for users to see and hear content including separating foreground from background.</li>
+						</ol>
+					</section>
+					<section id="WCAG2-operable">
+						<h4>Operable</h4>
+						<ol>
+							<li>Make all functionality available from a keyboard.</li>
+							<li>Provide users enough time to read and use content.</li>
+							<li>Do not design content in a way that is known to cause seizures.</li>
+							<li>Provide ways to help users navigate, find content, and determine where they are.</li>
+						</ol>
+					</section>
+					<section id="WCAG2-understandable">
+						<h4>Understandable</h4>
+						<ol>
+							<li>Make text content readable and understandable.</li>
+							<li>Make Web pages appear and operate in predictable ways.</li>
+							<li>Help users avoid and correct mistakes.</li>
+						</ol>
+					</section>
+					<section id="WCAG2-list">
+							<h4>Robust</h4>
+							<ol>
+								<li>Maximize compatibility with current and future user agents, including assistive technologies.</li>
+							</ol>
+					</section>
+				</section>
+				<section id="conformance">
+					<h2>WCAG2A, WCAG2AA, vs WCAG2AAA?</h2>
+					<img src="img/kitty-confused-banner.svg" alt="confused crypto kitty">
+				</section>
+				<section id="panic">
+					<img src="img/panic2.gif" alt="Brittany Spears panic" style="clear:both;display: block;margin:10px auto;">
+					<aside class="notes">
+						Are you mentally reviewing the code in your current project, wondering how many of these boxes you check?
+					</aside>
+				</section>
+				<section id="how">
+					<h2>How Do I Keep this All in Mind While Coding?</h2>
+				</section>
+				<section id="pa11y-rescue">
+					<h3 >Not the hero we need</h3>
+					<img src="img/logo.svg" alt="pa11y logo" style="clear:both;display: block;margin:10px auto;width:300px;">
+					<p><a href="http://pa11y.org/">http://pa11y.org/</a></p>
+					<h3>but the hero we deserve</h3>
+				</section>
+				<section id="pa11y-explanation">
+					<h3><a href="https://github.com/pa11y/pa11y">https://github.com/pa11y/pa11y</a></h3>
+					<p>Pa11y is your automated accessibility testing pal. It runs HTML CodeSniffer from the command line for programmatic accessibility reporting.</p>
+				</section>
+				<section id="review">
+					<h2>Let's test some websites!</h2>
+					<img src="img/watch.gif" alt="RuPaul opera glasses">
+				</section>
+				<section id="basic-cli">
+					<h2>pa11y cli is fun ...</h2>
+					<pre><code data-trim data-noescape>
+						pa11y http://www.codemash.org/
+
+						pa11y --reporter html http://www.codemash.org/ > codemash-report.html
+
+						pa11y --ignore "warning;notice" --reporter html http://www.codemash.org/ > codemash-report.html
+
+						pa11y --standard Section508 http://www.codemash.org/
+
+					</code></pre>
+					<p>but not super useful in a typical workflow</p>
+				</section>
+				<section id="cli-features">
+					<h2>From the cli</h2>
+					<ul>
+						<li>Run an accessibility test against a url</li>
+						<li>Use a reporter to output results to a file (csv,tsv,html,json,markdown)</li>
+						<li>Choose the accessibility ruleset</li>
+						<li>Choose to ignore warnings and notices</li>
+					</ul>
+				</section>
+				<section id="js-interface">
+					<section id="basics">
+						<h2>Using the JS Interface</h2>
+						<pre><code data-trim data-noescape>
+							var pa11y = require('pa11y');
+
+							var test = pa11y({
+							  //config options
+							});
+
+							test.run('http://localhost:4200/', function(error, result) {
+								if (error) {
+									return console.error(error.message);
+								}
+							  console.log(result);
+							});
+						</code></pre>
+					</section>
+					<section id="results-output">
+						<h2>Result output</h2>
+						<pre><code data-trim data-noescape>
+							[{
+				        code: 'WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2',
+				        context: '<a href="http://example.com/"><img src="example.jpg" alt=""/></a>',
+				        message: 'Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.',
+				        selector: 'html > body > p:nth-child(1) > a',
+				        type: 'error',
+				        typeCode: 1
+						   }]
+						</code></pre>
+					</section>
+					<section id="example-code">
+						<h2>Example Code Here:</h2>
+						<p><a href="https://github.com/tehfedaykin/AllAboutCryptoKitties">https://github.com/tehfedaykin/AllAboutCryptoKitties</a></p>
+						<a href="https://tehfedaykin.github.io/AllAboutCryptoKitties/"><img class="plain" src="img/mahkitty.svg" alt="" style="width:50%;"></a>
+					</section>
+					<section id="recap">
+						<h2>recap</h2>
+						<ul>
+							<li>basic test</li>
+							<li>to html file</li>
+							<li>custom html file</li>
+							<li>custom dashboard</li>
+							<li>actions</li>
+							<li>ignore</li>
+						</ul>
+					</div>
+				</section>
+				<section id="troubleshooting">
+					<section id="angular">
+						<h2>My Angular app isn't throwing any errors?</h2>
+						<p>It's probably not loading in phantomjs. Take a look at your polyfills:</p>
+						<pre><code data-trim data-noescape>
+							import 'core-js/es6/symbol';
+							import 'core-js/es6/object';
+							import 'core-js/es6/string';
+							import 'core-js/es6/array';
+						</code></pre>
+					</section>
+
+				</section>
+				<section id="explain-value">
+					<ul>
+						<li>improve SEO</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.js"></script>
-
+		<script src="js/charts.js"></script>
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
 			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
+				history: true,
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
@@ -45,5 +301,6 @@
 				]
 			});
 		</script>
+
 	</body>
 </html>
