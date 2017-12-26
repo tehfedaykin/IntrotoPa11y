@@ -115,6 +115,14 @@ body {
 .reveal ul ul ul {
   list-style-type: circle; }
 
+.reveal ul.checklist {
+  list-style-type: none; }
+  .reveal ul.checklist li {
+    font-size: 80%;
+    margin-bottom: 10px; }
+    .reveal ul.checklist li span {
+      margin-right: 10px; }
+
 .reveal ul ul,
 .reveal ul ol,
 .reveal ol ol,

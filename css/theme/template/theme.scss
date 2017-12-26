@@ -118,6 +118,17 @@ body {
 	list-style-type: circle;
 }
 
+.reveal ul.checklist {
+	list-style-type: none;
+	li {
+		font-size: 80%;
+		margin-bottom: 10px;
+		span {
+			margin-right: 10px;
+		}
+	}
+}
+
 .reveal ul ul,
 .reveal ul ol,
 .reveal ol ol,

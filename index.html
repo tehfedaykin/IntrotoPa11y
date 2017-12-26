@@ -62,7 +62,7 @@
 						computer system successfully.</p>
 				</section>
 				<section id="setstage">
-					<h2>Setting the Stage for Accessability Testing.</h2>
+					<h2>Setting the Stage for Accessibility Testing.</h2>
 					<h3>Issues:</h3>
 					<ul>
 						<li>blindness</li>
@@ -74,18 +74,22 @@
 						Tritanopia - blue/yellow colorblindness
 					</aside>
 				</section>
+				<section id="bonecollector">
+					<img src="img/bonecollector.gif" alt="">
+					<p>Just pretend Det. Lincoln Rhyme needs to be able to navigate your website to solve a homicide</p>
+				</section>
 				<section id="checklist">
-					<h2>Accessability Checklist</h2>
+					<h2>Accessibility Checklist</h2>
 					<ul class="checklist">
-						<li><input type="checkbox">Landmark Roles</li>
-						<li><input type="checkbox">Language Attribute</li>
-						<li><input type="checkbox">Semantic Headings</li>
-						<li><input type="checkbox">Links - :focus state and recognizable</li>
-						<li><input type="checkbox">Image alt text</li>
-						<li><input type="checkbox">Forms - labels, placeholdes, and fieldsets</li>
-						<li><input type="checkbox">Audio/video - provide transcripts/subtitles</li>
-						<li><input type="checkbox">Color & Contrast</li>
-						<li><input type="checkbox">Screen Reading/Keyboard Testing</li>
+						<li><span>✅</span> Landmark Roles</li>
+						<li><span>✅</span> Language Attribute</li>
+						<li><span>✅</span> Semantic Headings</li>
+						<li><span>✅</span> Links - :focus state and recognizable</li>
+						<li><span>✅</span> Image alt text</li>
+						<li><span>✅</span> Forms - labels, placeholdes, and fieldsets</li>
+						<li><span>✅</span> Audio/video - provide transcripts/subtitles</li>
+						<li><span>✅</span> Color & Contrast</li>
+						<li><span>✅</span> Screen Reading/Keyboard Testing</li>
 					</ul>
 				</section>
 				<section id="review-standards">
@@ -110,6 +114,10 @@
 							<li>Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape.</li>
 							<li>Row and column headers shall be identified for data tables.</li>
 							<li>Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.</li>
+						</ol>
+					</section>
+					<section id="section-508-list-continued">
+						<ol class="small" start="9">
 							<li>Frames shall be titled with text that facilitates frame identification and navigation.</li>
 							<li>Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.</li>
 							<li>A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance
@@ -191,28 +199,60 @@
 					<h2>Let's test some websites!</h2>
 					<img src="img/watch.gif" alt="RuPaul opera glasses">
 				</section>
-				<section id="basic-cli">
-					<h2>pa11y cli is fun ...</h2>
-					<pre><code data-trim data-noescape>
-						pa11y http://www.codemash.org/
+				<section id="basic-pa11y">
+					<section id="basic-cli">
+						<h2>pa11y cli is fun ...</h2>
+						<pre><code data-trim data-noescape>
+							pa11y http://www.codemash.org/
 
-						pa11y --reporter html http://www.codemash.org/ > codemash-report.html
+							pa11y --reporter html http://www.codemash.org/ > codemash-report.html
 
-						pa11y --ignore "warning;notice" --reporter html http://www.codemash.org/ > codemash-report.html
+							pa11y --ignore "warning;notice" --reporter html http://www.codemash.org/ > codemash-report.html
 
-						pa11y --standard Section508 http://www.codemash.org/
+							pa11y --standard Section508 http://www.codemash.org/
 
-					</code></pre>
-					<p>but not super useful in a typical workflow</p>
+						</code></pre>
+						<p>but not super useful in a typical workflow</p>
+					</section>
+					<section id="cli-features">
+						<h2>From the cli</h2>
+						<ul>
+							<li>Run an accessibility test against a url</li>
+							<li>Use a reporter to output results to a file (csv,tsv,html,json,markdown)</li>
+							<li>Choose the accessibility ruleset</li>
+							<li>Choose to ignore warnings and notices</li>
+						</ul>
+					</section>
 				</section>
-				<section id="cli-features">
-					<h2>From the cli</h2>
-					<ul>
-						<li>Run an accessibility test against a url</li>
-						<li>Use a reporter to output results to a file (csv,tsv,html,json,markdown)</li>
-						<li>Choose the accessibility ruleset</li>
-						<li>Choose to ignore warnings and notices</li>
-					</ul>
+				<section id="pa11y-ci">
+					<section id="about-ci">
+						<h2>pa11y-ci</h2>
+						<p>CI runs accessibility tests against multiple URLs and reports on any issues.
+							This is best used during automated testing of your application and can act as
+							a gatekeeper to stop a11y issues from making it to live.</p>
+					</section>
+					<section id="ci-usage">
+						<p>.pa11yci</p>
+						<pre><code data-trim data-noescape>
+							{
+							  "defaults": {
+							    "standard": "WCAG2AAA"
+							  },
+							  "urls": [
+							    "http://localhost:4200/",
+							    "http://localhost:4200/about/kitties",
+							    {
+							      "url": "http://localhost:4200/ethereum101",
+							      "actions": [
+							        "click element #myButton",
+							        "wait for element modal-container to be hidden"
+							      ]
+							    }
+							  ]
+							}
+						</code></pre>
+
+					</section>
 				</section>
 				<section id="js-interface">
 					<section id="basics">
@@ -225,9 +265,9 @@
 							});
 
 							test.run('http://localhost:4200/', function(error, result) {
-								if (error) {
-									return console.error(error.message);
-								}
+							  if (error) {
+							    return console.error(error.message);
+							  }
 							  console.log(result);
 							});
 						</code></pre>
@@ -236,29 +276,156 @@
 						<h2>Result output</h2>
 						<pre><code data-trim data-noescape>
 							[{
-				        code: 'WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2',
-				        context: '<a href="http://example.com/"><img src="example.jpg" alt=""/></a>',
-				        message: 'Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.',
-				        selector: 'html > body > p:nth-child(1) > a',
-				        type: 'error',
-				        typeCode: 1
-						   }]
+							  code: 'WCAG2AA.Principle1.Guideline1_1.1_1_1.H30.2',
+							  context: '<a href="http://example.com/"><img src="example.jpg" alt=""/></a>',
+							  message: 'Img element is the only content of the link, but is missing alt text. The alt text should describe the purpose of the link.',
+							  selector: 'html > body > p:nth-child(1) > a',
+							  type: 'error',
+							  typeCode: 1
+							 }]
+						</code></pre>
+					</section>
+					<section id="config-actions">
+						<h2>Actions</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  actions: [
+							    'click element #tab-1',
+							    'wait for element #tab-1-content to be visible',
+							    'set field #fullname to John Doe',
+							    'check field #terms-and-conditions',
+							    'uncheck field #subscribe-to-marketing',
+							    'wait for #modal to be visible',
+							    'wait for fragment to be #page-2',
+							    'wait for path to not be /login'
+							  ]
+							});
+						</code></pre>
+					</section>
+					<section id="config-beforeScript">
+						<h2>beforeScript</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  beforeScript: function(page, options, next) {
+							    // Make changes to the page
+							    // When finished call next to continue running Pa11y tests
+							    next();
+							  }
+							});
+						</code></pre>
+						<p class="small"><a href="https://github.com/baudehlo/node-phantom-simple#node-phantom-simple">https://github.com/baudehlo/node-phantom-simple#node-phantom-simple</a></p>
+					</section>
+					<section id="config-hideElements">
+						<h2>hideElements</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  hideElements: '.advert, #modal, div[aria-role=presentation]'
+							});
+						</code></pre>
+					</section>
+					<section id="ignore">
+						<h2>ignore</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  ignore: [
+							    'notice',
+							    'WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2'
+							  ]
+							});
+						</code></pre>
+					</section>
+					<section id="log">
+						<h2>log</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  log: {
+							    debug: console.log.bind(console),
+							    error: console.error.bind(console),
+							    info: console.info.bind(console)
+							  }
+							});
+						</code></pre>
+					</section>
+					<section id="page">
+						<h2>page</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  page: {
+							    headers: {
+							      Cookie: 'foo=bar'
+							    },
+							    settings: {
+							      loadImages: false,
+							      userName: 'nature',
+							      password: 'say the magic word'
+							    },
+							    viewport: {
+							      width: 1024,
+							      height: 768
+							    }
+							  }
+							});
+						</code></pre>
+						<p class="small"><a href="http://phantomjs.org/api/webpage/property/settings.html">http://phantomjs.org/api/webpage/property/settings.html</a></p>
+					</section>
+					<section id="rules-standard">
+						<h2>rules/standard</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  rules: [
+							    'Principle1.Guideline1_3.1_3_1_AAA'
+							  ],
+							  standard: 'WCAG2AAA'
+							});
+						</code></pre>
+					</section>
+					<section id="screencapture">
+						<h2>screenCapture</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  screenCapture: __dirname + '/my-screen-capture.png'
+							});
+						</code></pre>
+					</section>
+					<section id="timeout-wait">
+						<h2>timeout/wait</h2>
+						<pre><code data-trim data-noescape>
+							pa11y({
+							  timeout: 500,
+							  wait: 500
+							});
+						</code></pre>
+					</section>
+					<section id="verifyPage">
+						<h2>verifyPage</h2>
+						<pre><code data-trim >
+							pa11y({
+							  verifyPage: '<title>All About Cryptokitties</title>'
+							});
 						</code></pre>
 					</section>
 					<section id="example-code">
 						<h2>Example Code Here:</h2>
-						<p><a href="https://github.com/tehfedaykin/AllAboutCryptoKitties">https://github.com/tehfedaykin/AllAboutCryptoKitties</a></p>
-						<a href="https://tehfedaykin.github.io/AllAboutCryptoKitties/"><img class="plain" src="img/mahkitty.svg" alt="" style="width:50%;"></a>
+						<p><a target="_blank" href="https://github.com/tehfedaykin/AllAboutCryptoKitties">https://github.com/tehfedaykin/AllAboutCryptoKitties</a></p>
+						<a target="_blank" href="https://tehfedaykin.github.io/AllAboutCryptoKitties/"><img class="plain" src="img/mahkitty.svg" alt="" style="width:50%;"></a>
+					</section>
+					<section id="pa11y-customwork">
+						<h2>Ugh, that seems like a lot of work</h2>
+						<img src="img/rupaultime.gif" alt="">
+					</section>
+					<section id="pa11y-dashboard">
+						<h2>pa11y Dashboard</h2>
+						<p><a href="https://github.com/pa11y/pa11y-dashboard">https://github.com/pa11y/pa11y-dashboard</a></p>
 					</section>
 					<section id="recap">
 						<h2>recap</h2>
 						<ul>
-							<li>basic test</li>
-							<li>to html file</li>
-							<li>custom html file</li>
-							<li>custom dashboard</li>
-							<li>actions</li>
-							<li>ignore</li>
+							<li class="fragment">we wrote a basic test</li>
+							<li class="fragment">we output results to html file</li>
+							<li class="fragment">we created a custom report html file</li>
+							<li class="fragment">we created a custom dashboard</li>
+							<li class="fragment">we used actions to aid tests</li>
+							<li class="fragment">we ignored certain elements</li>
 						</ul>
 					</section>
 				</section>
@@ -273,12 +440,35 @@
 							import 'core-js/es6/array';
 						</code></pre>
 					</section>
-
+				</section>
+				<section id="pa11y-5.0">
+					<h2>pa11y 5.0</h2>
+					<ul class="small">
+						<li class="fragment">Switching from PhantomJS to Headless Chrome</li>
+						<li class="fragment">Only supports Node.js v8.0.0 and higher</li>
+						<li class="fragment">Ignores warnings and notices by default</li>
+						<li class="fragment">Promise-based, and uses async/await internally. <br/>
+							This means the API has changed significantly.</li>
+						<li class="fragment">No longer need to create a separate test function, <br />
+							now Pa11y is just one function: pa11y(url, options)</li>
+						<li class="fragment">4.0 reporters have been removed</li>
+						<li class="fragment">Default viewport dimensions changing from 1024x768 to 1280x1024</li>
+						<li class="fragment">Configuration option changes - mostly related to removing PhantomJS</li>
+					</ul>
 				</section>
 				<section id="explain-value">
+					<h2>Aruging the business side</h2>
 					<ul>
-						<li>improve SEO</li>
+						<li class="fragment">Minimal effort to implement</li>
+						<li class="fragment">Immediate improvements available</li>
+						<li class="fragment">Audience retention</li>
+						<li class="fragment">Build customer loyalty</li>
+						<li class="fragment">Help improve SEO</li>
 					</ul>
+				</section>
+				<section id="slide-url">
+					<h2>Slides available at:</h2>
+					<p><a href="https://tehfedaykin.github.io/IntrotoPa11y">https://tehfedaykin.github.io/IntrotoPa11y</a></p>
 				</section>
 			</div>
 		</div>
