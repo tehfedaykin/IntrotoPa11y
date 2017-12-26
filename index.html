@@ -253,6 +253,13 @@
 						</code></pre>
 
 					</section>
+					<section id="fail-threshold">
+						<h2>Define your fail threshold</h2>
+						<pre><code data-trim data-noescape>
+							pa11y-ci --threshold 10
+						</code></pre>
+						<p>How many errors before "failure" is determined</p>
+					</section>
 				</section>
 				<section id="js-interface">
 					<section id="basics">
@@ -303,7 +310,7 @@
 						</code></pre>
 					</section>
 					<section id="config-beforeScript">
-						<h2>beforeScript</h2>
+						<h2>before Script</h2>
 						<pre><code data-trim data-noescape>
 							pa11y({
 							  beforeScript: function(page, options, next) {
@@ -316,7 +323,7 @@
 						<p class="small"><a href="https://github.com/baudehlo/node-phantom-simple#node-phantom-simple">https://github.com/baudehlo/node-phantom-simple#node-phantom-simple</a></p>
 					</section>
 					<section id="config-hideElements">
-						<h2>hideElements</h2>
+						<h2>hide Elements</h2>
 						<pre><code data-trim data-noescape>
 							pa11y({
 							  hideElements: '.advert, #modal, div[aria-role=presentation]'
@@ -380,7 +387,7 @@
 						</code></pre>
 					</section>
 					<section id="screencapture">
-						<h2>screenCapture</h2>
+						<h2>screen Capture</h2>
 						<pre><code data-trim data-noescape>
 							pa11y({
 							  screenCapture: __dirname + '/my-screen-capture.png'
@@ -397,7 +404,7 @@
 						</code></pre>
 					</section>
 					<section id="verifyPage">
-						<h2>verifyPage</h2>
+						<h2>verify Page</h2>
 						<pre><code data-trim >
 							pa11y({
 							  verifyPage: '<title>All About Cryptokitties</title>'
@@ -431,8 +438,9 @@
 				</section>
 				<section id="troubleshooting">
 					<section id="angular">
-						<h2>My Angular app isn't throwing any errors?</h2>
-						<p>It's probably not loading in phantomjs. Take a look at your polyfills:</p>
+						<h2>troubleshooting</h2>
+						<p>My Angular app isn't throwing any errors?</p>
+						<p class="small">Your code is perfect! JK. It's probably not loading in phantomjs. Take a look at your polyfills:</p>
 						<pre><code data-trim data-noescape>
 							import 'core-js/es6/symbol';
 							import 'core-js/es6/object';
@@ -442,7 +450,7 @@
 					</section>
 				</section>
 				<section id="pa11y-5.0">
-					<h2>pa11y 5.0</h2>
+					<h2>coming to a repo near you: pa11y 5.0</h2>
 					<ul class="small">
 						<li class="fragment">Switching from PhantomJS to Headless Chrome</li>
 						<li class="fragment">Only supports Node.js v8.0.0 and higher</li>
