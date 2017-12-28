@@ -68,6 +68,7 @@
 						<li>blindness</li>
 						<li>color blindness(Deuteranopia, Protanopia, Tritanopia)</li>
 					</ul>
+					<p><a href="webaim.org/resources/contrastchecker/" target="_blank">webaim.org/resources/contrastchecker/</a></p>
 					<aside class="notes">
 						Deuteranopia - red green colorblindness - less sensitive to green light
 						Protanopia - red/green colorblindess - less sensitive to red light
@@ -197,7 +198,7 @@
 				</section>
 				<section id="review">
 					<h2>Let's test some websites!</h2>
-					<img src="img/watch.gif" alt="RuPaul opera glasses">
+					<img src="img/watch.gif" alt="Rupaul opera glasses">
 				</section>
 				<section id="basic-pa11y">
 					<section id="basic-cli">
@@ -411,6 +412,10 @@
 							});
 						</code></pre>
 					</section>
+					<section id="test-v4">
+						<h2>Let's test some more websites!</h2>
+						<img src="img/rupaulclap.gif" alt="Rupaul clapping">
+					</section>
 					<section id="example-code">
 						<h2>Example Code Here:</h2>
 						<p><a target="_blank" href="https://github.com/tehfedaykin/AllAboutCryptoKitties">https://github.com/tehfedaykin/AllAboutCryptoKitties</a></p>
@@ -418,7 +423,7 @@
 					</section>
 					<section id="pa11y-customwork">
 						<h2>Ugh, that seems like a lot of work</h2>
-						<img src="img/rupaultime.gif" alt="">
+						<img src="img/rupaultime.gif" alt="Rupaul doesn't have time for that">
 					</section>
 					<section id="pa11y-dashboard">
 						<h2>pa11y Dashboard</h2>
@@ -437,16 +442,32 @@
 					</section>
 				</section>
 				<section id="troubleshooting">
-					<section id="angular">
+					<section id="angular-polyfills">
 						<h2>troubleshooting</h2>
 						<p>My Angular app isn't throwing any errors?</p>
-						<p class="small">Your code is perfect! JK. It's probably not loading in phantomjs. Take a look at your polyfills:</p>
-						<pre><code data-trim data-noescape>
+						<p class=" fragment"><i>Your code is perfect! JK. It's probably not loading in phantomjs. Take a look at your polyfills:</i></p>
+						<pre class="fragment"><code data-trim data-noescape>
 							import 'core-js/es6/symbol';
 							import 'core-js/es6/object';
 							import 'core-js/es6/string';
 							import 'core-js/es6/array';
 						</code></pre>
+					</section>
+					<section id="flexbox">
+						<h2>troubleshooting</h2>
+						<p>My layout looks broken in screencaptures?</p>
+						<p class=" fragment"><i>Are you using flexbox? PhantomJS doesn't support flex = (</i></p>
+						<ul class="small">
+							<li class="fragment">Workaround 1: Add prefixes</li>
+							<li class="fragment">Workaround 2: Use a <a href="https://github.com/jonathantneal/flexibility" target="_blank">polyfill</a> + PostCSS processor</li>
+							<li class="fragment">Workaround 3: Use the pa11y 5.0 beta - chrome likes flexbox!</li>
+						</ul>
+					</section>
+					<section id="SPA">
+						<h2>troubleshooting</h2>
+						<p><i>My single page app pages aren't loading in the pa11y 5.0 beta!</i></p>
+						<p class=" fragment">Puppeteer broke window.pushState support in the current release.
+							You can use actions to click nav items as a temporary workaround.</p>
 					</section>
 				</section>
 				<section id="pa11y-5.0">
@@ -473,6 +494,7 @@
 						<li class="fragment">Audience retention</li>
 						<li class="fragment">Build customer loyalty</li>
 						<li class="fragment">Help improve SEO</li>
+						<li class="fragment">Avoid lawsuits(federal orgs & projects)</li>
 					</ul>
 				</section>
 				<section id="slide-url">
