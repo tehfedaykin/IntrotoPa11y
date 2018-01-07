@@ -39,7 +39,7 @@
 					<ul>
 						<li class="fragment">JavaScript Developer</li>
 						<li class="fragment">Community Organizer</li>
-						<li class="fragment">Diversity Advocate</li>
+						<li class="fragment">Fairly Decent Programmer</li>
 					</ul>
 				</section>
 				<section id="intro-story">
@@ -50,9 +50,26 @@
 					</aside>
 				</section>
 				<section id="stats">
-			     <div id="visually-impaired" style="width: 100%;height: 500px;"></div>
-					 <p class="small">Data source: National Center for Health Statistics, National Health
-						 Interview Survey (NHIS), 2015, <a href="www.cdc.gov/nchs/nhis.htm">www.cdc.gov/nchs/nhis.htm</a>.</p>
+					<section id="visually-impaired">
+						<h2>Visually Impaired Americans</h2>
+				    <div id="visually-impaired-chart" style="width: 100%;height: 500px;"></div>
+					</section>
+					<section id="hearing-impaired">
+						<h2>Hearing Impaired Americans</h2>
+				    <div id="hearing-impaired-chart" style="width: 100%;height: 500px;"></div>
+					</section>
+					<section id="physically-impaired">
+						<h2>Physically Impaired Americans</h2>
+				    <div id="physically-impaired-chart" style="width: 100%;height: 500px;"></div>
+
+					</section>
+					<section id="compare-disabilities">
+						<h2>Impaired Americans</h2>
+				    <div id="compare-disabilities-chart" style="width: 100%;height: 500px;"></div>
+						<p class="small">Data source: National Center for Health Statistics, Summary Health Statistics:
+							National Health Interview Survey, 2015 , <a href="https://www.cdc.gov/nchs/fastats/disability.htm">https://www.cdc.gov/nchs/fastats/disability.htm</a>.</p>
+
+					</section>
 				</section>
 				<section id="a11y">
 					<h2>a11y</h2>
@@ -62,18 +79,47 @@
 						computer system successfully.</p>
 				</section>
 				<section id="setstage">
-					<h2>Setting the Stage for Accessibility Testing.</h2>
-					<h3>Issues:</h3>
-					<ul>
-						<li>blindness</li>
-						<li>color blindness(Deuteranopia, Protanopia, Tritanopia)</li>
-					</ul>
-					<p><a href="webaim.org/resources/contrastchecker/" target="_blank">webaim.org/resources/contrastchecker/</a></p>
-					<aside class="notes">
-						Deuteranopia - red green colorblindness - less sensitive to green light
-						Protanopia - red/green colorblindess - less sensitive to red light
-						Tritanopia - blue/yellow colorblindness
-					</aside>
+					<section id="issues">
+						<h2>Setting the Stage for Accessibility Testing</h2>
+						<h3>Issues to be aware of:</h3>
+					</section>
+					<section id="visual">
+						<h3>Visual Impairments</h3>
+						<ul>
+							<li class="fragment">blindness</li>
+							<li class="fragment">color blindness(Deuteranopia, Protanopia, Tritanopia)</li>
+						</ul>
+						<p class="fragment"><a href="webaim.org/resources/contrastchecker/" target="_blank">webaim.org/resources/contrastchecker/</a></p>
+						<aside class="notes">
+							Deuteranopia - red green colorblindness - less sensitive to green light
+							Protanopia - red/green colorblindess - less sensitive to red light
+							Tritanopia - blue/yellow colorblindness
+						</aside>
+					</section>
+					<section id="auditory">
+						<h3>Auditory Impairments</h3>
+						<ul>
+							<li class="fragment">Deafness or partial deafness</li>
+							<li class="fragment">Needing to rely on subtitles & text</li>
+						</ul>
+					</section>
+					<section id="motor">
+						<h3>Motor Impairments</h3>
+						<ul>
+							<li class="fragment">Physical impairments - ex. loss of limbs</li>
+							<li class="fragment">Age - affecting coordination</li>
+							<li class="fragment">Diseaes - affecting motor control</li>
+							<li class="fragment">Struggles using mouse or keyboard</li>
+						</ul>
+					</section>
+					<section id="considerations">
+						<h3>Other Considerations</h3>
+						<ul>
+							<li class="fragment">Mobile devices</li>
+							<li class="fragment">Slow internet connectivity</li>
+							<li class="fragment">Enlarged/zoomed in text</li>
+						</ul>
+					</section>
 				</section>
 				<section id="bonecollector">
 					<img src="img/bonecollector.gif" alt="">
@@ -96,49 +142,16 @@
 				<section id="review-standards">
 					<h2>Let's review some standards!</h2>
 				</section>
-				<section>
-					<section id="section-508">
-						<h2>Section 508 Standards</h2>
-						<h4>§ 1194.22   Web-based intranet and internet information and applications.</h4>
-						<p class="small">
-							<a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards">
-							https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards</a>
-						</p>
-					</section>
-					<section id="section-508-list">
-						<ol class="small">
-							<li>A text equivalent for every non-text element shall be provided (e.g., via “alt”, “longdesc”, or in element content).</li>
-							<li>Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.</li>
-							<li>Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.</li>
-							<li>Documents shall be organized so they are readable without requiring an associated style sheet.</li>
-							<li>Redundant text links shall be provided for each active region of a server-side image map.</li>
-							<li>Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape.</li>
-							<li>Row and column headers shall be identified for data tables.</li>
-							<li>Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.</li>
-						</ol>
-					</section>
-					<section id="section-508-list-continued">
-						<ol class="small" start="9">
-							<li>Frames shall be titled with text that facilitates frame identification and navigation.</li>
-							<li>Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.</li>
-							<li>A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance
-								cannot be accomplished in any other way.  The content of the text-only page shall be updated whenever the primary page changes.</li>
-							<li>When pages utilize scripting languages to display content, or to create interface elements, the information provided by
-								the script shall be identified with functional text that can be read by assistive technology.</li>
-							<li>When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a
-								link to a plug-in or applet that complies with §1194.21(a) through (l).</li>
-							<li>When electronic forms are designed to be completed on-line, the form shall allow people using assistive technology to access the information, field elements,
-								and functionality required for completion and submission of the form, including all directions and cues.</li>
-							<li>A method shall be provided that permits users to skip repetitive navigation links.</li>
-							<li>When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.</li>
-						</ol>
-					</section>
-				</section>
 				<section id="">
 					<section id="WCAG2">
 						<h2>WCAG 2.0 Guidelines</h2>
 						<h4>§ 1194.22   Web-based intranet and internet information and applications.</h4>
 						<p class="small"><a href="https://www.w3.org/TR/WCAG20/">https://www.w3.org/TR/WCAG20/</a></p>
+						<ul class="small">
+							<li class="fragment">Produced by the <a href="https://www.w3.org/">World Wide Web Consortium</a></li>
+							<li class="fragment">First created in 1999</li>
+							<li class="fragment">Current guidelines have been in place since 2008</li>
+						</ul>
 					</section>
 					<section id="WCAG2-percievable">
 						<h4>Percievable</h4>
@@ -175,7 +188,71 @@
 				</section>
 				<section id="conformance">
 					<h2>WCAG2A, WCAG2AA, vs WCAG2AAA?</h2>
-					<img class="plain"src="img/kitty-confused-banner.svg" alt="confused crypto kitty">
+					<img class="plain" src="img/kitty-confused-banner.svg" alt="confused crypto kitty">
+					<ul class="small">
+						<li class="fragment">Level A – the most basic web accessibility features</li>
+						<li class="fragment">Level AA – deals with the biggest and most common barriers for disabled users</li>
+						<li class="fragment">Level AAA – the highest (and most complex) level of web accessibility</li>
+					</ul>
+				</section>
+				<section>
+				  <section id="section-508">
+				    <h2>Section 508 Standards</h2>
+				    <p class="small">
+				      <a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards">
+				      https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards</a>
+				    </p>
+				    <p class="small">Section 508 is the amendment to the United States Workforce Rehabilitation Act of 1973, a federal law mandating that all electronic and
+				      information technology developed, procured, maintained, or used by the federal government be accessible to people with disabilities.</p>
+				    <ul class="small">
+				      <li class="fragment">Published December 21, 2000</li>
+				      <li class="fragment">Part of the Federal Acquisition Regulation (FAR) - address access for people with physical, sensory, or cognitive disabilities</li>
+				      <li class="fragment">Updated on January 17th, 2017 - this integrated WCAG 2.0</li>
+				      <li class="fragment">For all other non-procured ICT, federal agencies and contractors must comply with the updated 508 Standards beginning on January 18, 2018.</li>
+				    </ul>
+				  </section>
+					<section id="list-section-508">
+				    <ol class="small">
+				      <li>A text equivalent for every non-text element shall be provided (e.g., via “alt”, “longdesc”, or in element content).</li>
+				      <li>Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.</li>
+				      <li>Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.</li>
+				      <li>Documents shall be organized so they are readable without requiring an associated style sheet.</li>
+				      <li>Redundant text links shall be provided for each active region of a server-side image map.</li>
+				      <li>Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape.</li>
+				      <li>Row and column headers shall be identified for data tables.</li>
+				      <li>Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.</li>
+				    </ol>
+				  </section>
+					<section id="list-continued-section-508">
+				    <ol class="small" start="9">
+				      <li>Frames shall be titled with text that facilitates frame identification and navigation.</li>
+				      <li>Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.</li>
+				      <li>A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance
+				        cannot be accomplished in any other way.  The content of the text-only page shall be updated whenever the primary page changes.</li>
+				      <li>When pages utilize scripting languages to display content, or to create interface elements, the information provided by
+				        the script shall be identified with functional text that can be read by assistive technology.</li>
+				      <li>When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a
+				        link to a plug-in or applet that complies with §1194.21(a) through (l).</li>
+				      <li>When electronic forms are designed to be completed on-line, the form shall allow people using assistive technology to access the information, field elements,
+				        and functionality required for completion and submission of the form, including all directions and cues.</li>
+				      <li>A method shall be provided that permits users to skip repetitive navigation links.</li>
+				      <li>When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.</li>
+				    </ol>
+				  </section>
+					<section id="final-update">
+				    <h2>Major Changes- Final Update</h2>
+				    <ul class="small">
+				      <li>Restructuring provisions by functionality instead of product type due to the increasingly multi-functional capabilities of ICT;</li>
+				      <li><i>Incorporating the Web Content Accessibility Guidelines (WCAG) 2.0 by reference and applying Level A and Level AA Success Criteria
+								and Conformance Requirements to websites, as well as to non-web electronic documents and software;</i></li>
+				      <li>Specifying the types of non-public facing electronic content that must comply;</li>
+				      <li>Requiring that operating systems provide certain accessibility features;</li>
+				      <li>Clarifying that software and operating systems must interoperate with assistive technology (such as screen magnification software and refreshable braille displays);</li>
+				      <li>Addressing access for people with cognitive, language, and learning disabilities; and</li>
+				      <li>Harmonizing the requirements with international standards.</li>
+				    </ul>
+						<p class="small"><a href="https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/overview-of-the-final-rule">https://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-ict-refresh/overview-of-the-final-rule</a></p>
+				  </section>
 				</section>
 				<section id="panic">
 					<img class="plain" src="img/porgpanic.gif" alt="Porg panic" style="clear:both;display: block;margin:10px auto;">
@@ -185,6 +262,11 @@
 				</section>
 				<section id="how">
 					<h2>How Do I Keep this All in Mind While Coding?</h2>
+				</section>
+				<section id="einstein" data-background="img/einstein.jpg">
+				</section>
+				<section id="queenofhearts">
+					<img src="img/offwiththeirheads.gif" alt="">
 				</section>
 				<section id="pa11y-rescue">
 					<h3 >Not the hero we need</h3>
